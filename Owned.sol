@@ -31,8 +31,7 @@ contract Owned{
       }
   }
 
-  function bytes32ToString(bytes32 memory source) returns(string){ 
-    string memory converted = string(source);
-    return converted;
+  function bytes32ToString(bytes32 source) returns(string){ 
+    return string(source);
   }
 }
