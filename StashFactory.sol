@@ -15,7 +15,7 @@ contract StashFactory is Owned {
         return _createStash(stringToBytes32(_stashName));
     }
 
-    function getStash(string _stashName) onlyOwner returns (address){
+    function getStash(string _stashName) onlyOwner view returns (address){
         return stashRegistry[stringToBytes32(_stashName)];
     }
 
