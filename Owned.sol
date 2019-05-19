@@ -31,7 +31,4 @@ contract Owned{
       }
   }
 
-  function bytes32ToString(bytes32 source) returns(string){ 
-    return string(source);
-  }
 }
