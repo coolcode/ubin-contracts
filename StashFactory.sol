@@ -15,6 +15,11 @@ contract StashFactory is Owned {
         return _createStash(stringToBytes32(_stashName));
     }
 
+    function getStash(string _stashName) onlyOwner returns (address){
+        return stashRegistry[stringToBytes32(_stashName)];
+    }
+
+
     /* @pseudo-public */
     function _createStash(bytes32 _stashName) onlyOwner returns (bool){
         address stash = new Stash(_stashName);
@@ -131,14 +136,4 @@ contract StashFactory is Owned {
         stashNames.length = 0;
     }
 
-    function stringToBytes32(string memory source) returns (bytes32 result) {
-        bytes memory tempEmptyStringTest = bytes(source);
-        if (tempEmptyStringTest.length == 0) {
-            return 0x0;
-        }
-
-        assembly {
-            result := mload(add(source, 32))
-        }
-    }
 }

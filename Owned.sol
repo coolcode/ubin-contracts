@@ -19,4 +19,20 @@ contract Owned{
   function changeOwner(address _newOwner) onlyOwner {
     owner = _newOwner;
   }
+
+  function stringToBytes32(string memory source) returns (bytes32 result) {
+      bytes memory tempEmptyStringTest = bytes(source);
+      if (tempEmptyStringTest.length == 0) {
+          return 0x0;
+      }
+
+      assembly {
+          result := mload(add(source, 32))
+      }
+  }
+
+  function bytes32ToString(bytes32 memory source) returns(string){ 
+    string memory converted = string(source);
+    return converted;
+  }
 }
